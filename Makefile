@@ -6,7 +6,7 @@ NAME  = devenv
 
 # why don't you like strace?
 EARGS = --cap-add=SYS_PTRACE
-VOL   = ./vol:/app/$(NAME)/vol
+VOL   = ${PWD}/vol:/app/$(NAME)/vol
 
 build: Dockerfile
 	@docker build -t $(NAME) .
