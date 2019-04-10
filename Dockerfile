@@ -8,10 +8,12 @@ ARG id=devenv
 ARG port=8080
 
 ENV APP /app/${id}
+ENV ENV /home/.profile
 
 COPY requirements.txt ${APP}/
-COPY ${id}  ${APP}/home/
-COPY vimrc  ${HOME}/.vimrc
+COPY ${id}   ${APP}/home/
+COPY vimrc   ${HOME}/.vimrc
+COPY profile ${HOME}/.profile
 
 # Shell configuration
 RUN apk add bash vim wget gawk
