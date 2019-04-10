@@ -11,9 +11,10 @@ ENV APP /app/${id}
 
 COPY requirements.txt ${APP}/
 COPY ${id}  ${APP}/home/
+COPY vimrc  ${HOME}/.vimrc
 
 # Shell configuration
-RUN apk add bash vim wget awk
+RUN apk add bash vim wget gawk
 
 # Python configuration
 RUN   mkdir -p "${APP}/env"  && \
