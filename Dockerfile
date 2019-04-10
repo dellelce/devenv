@@ -12,6 +12,10 @@ ENV APP /app/${id}
 COPY requirements.txt ${APP}/
 COPY ${id}  ${APP}/home/
 
+# Shell configuration
+RUN apk add bash vim wget awk
+
+# Python configuration
 RUN   mkdir -p "${APP}/env"  && \
       cd "${APP}/env" && \
       ${INSTALLDIR}/bin/python3 -m venv . && \
