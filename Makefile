@@ -13,6 +13,6 @@ build: Dockerfile
 
 # yeah --rm, I always forget that other otherwise they stay ther
 run:
-	@docker run --name $(NAME) --rm $(EARGS) -e PORT=$(PORT) -it $(NAME)  bash
+	@docker run --name $(NAME) --rm $(EARGS) -e PORT=$(PORT) -v $(VOL) -it $(NAME)  bash
 
 all: build run
