@@ -8,12 +8,12 @@ ARG id=devenv
 ARG port=8080
 
 ENV APP /app/${id}
-ENV ENV /home/.profile
+ENV HOME /root
 
 COPY requirements.txt ${APP}/
 COPY ${id}   ${APP}/home/
 COPY vimrc   ${HOME}/.vimrc
-COPY profile ${HOME}/.profile
+COPY profile ${HOME}/.bashrc
 
 # Shell configuration
 RUN apk add bash vim wget gawk
@@ -23,8 +23,10 @@ RUN   mkdir -p "${APP}/env"  && \
       cd "${APP}/env" && \
       ${INSTALLDIR}/bin/python3 -m venv . && \
       . ${APP}/env/bin/activate     && \
-      pip install -U pip setuptools && \
-      pip install -r ${APP}/requirements.txt && \
+      pip install --no-cache-dir -U pip setuptools && \
+      pip install --no-cache-dir -r ${APP}/requirements.txt && \
       rm ${APP}/requirements.txt 
+
+WORKDIR ${APP}
 
 ## EOF ##
