@@ -1,4 +1,6 @@
 #
+FROM dellelce/cairobase as cairo
+
 # Base image "dellelce/uwsgi" is alpine + python3 latest + uwsgi
 FROM dellelce/uwsgi
 
@@ -15,6 +17,9 @@ COPY requirements.txt requirements-dev.txt ${APP}/
 COPY ${id}   ${APP}/home/
 COPY vimrc   ${HOME}/.vimrc
 COPY profile ${HOME}/.bashrc
+
+
+COPY --from=cairo /app/cairo /app/cairo
 
 # Shell configuration
 RUN apk add bash vim wget gawk gcc
