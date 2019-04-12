@@ -10,13 +10,14 @@ ARG port=8080
 ENV APP /app/${id}
 ENV HOME /root
 
-COPY requirements.txt ${APP}/
+COPY requirements.txt requirements-dev.txt ${APP}/
+
 COPY ${id}   ${APP}/home/
 COPY vimrc   ${HOME}/.vimrc
 COPY profile ${HOME}/.bashrc
 
 # Shell configuration
-RUN apk add bash vim wget gawk
+RUN apk add bash vim wget gawk gcc
 
 # Python configuration
 RUN   mkdir -p "${APP}/env"  && \
@@ -24,9 +25,12 @@ RUN   mkdir -p "${APP}/env"  && \
       ${INSTALLDIR}/bin/python3 -m venv . && \
       . ${APP}/env/bin/activate     && \
       pip install --no-cache-dir -U pip setuptools && \
-      pip install --no-cache-dir -r ${APP}/requirements.txt && \
-      rm ${APP}/requirements.txt 
+      pip install --no-cache-dir -r ${APP}/requirements-dev.txt && \
+      rm ${APP}/requirements-dev.txt && \
+      rm ${APP}/requirements.txt
 
 WORKDIR ${APP}
+
+ENTRYPOINT /bin/bash
 
 ## EOF ##
