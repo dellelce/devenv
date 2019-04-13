@@ -3,4 +3,4 @@
 export PS1='\$ '
 alias vi=vim
 
-. ${APP}/env/bin/activate
+[ -f "${APP}/env/bin/activate" ] && . ${APP}/env/bin/activate
