@@ -22,7 +22,7 @@ COPY profile ${HOME}/.bashrc
 COPY --from=cairo /app/cairo /app/cairo
 
 # Shell configuration
-RUN apk add bash vim wget gawk gcc
+RUN apk add bash vim wget gawk gcc openjdk8
 
 # Python configuration
 RUN   mkdir -p "${APP}/env"  && \
