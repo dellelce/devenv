@@ -18,11 +18,8 @@ COPY ${id}   ${APP}/home/
 COPY vimrc   ${HOME}/.vimrc
 COPY profile ${HOME}/.bashrc
 
-
-COPY --from=cairo /app/cairo /app/cairo
-
 # Shell configuration
-RUN apk add bash vim wget gawk gcc git openjdk8 maven
+RUN apk add bash vim wget gawk gcc git libc-dev make openjdk8 maven
 
 # Python configuration
 RUN   mkdir -p "${APP}/env"  && \
@@ -33,6 +30,11 @@ RUN   mkdir -p "${APP}/env"  && \
       pip install --no-cache-dir -r ${APP}/requirements-dev.txt && \
       rm ${APP}/requirements-dev.txt && \
       rm ${APP}/requirements.txt
+
+# Cairo Install
+COPY --from=cairo /app/cairo /app/cairo
+ENV LD_LIBRARY_PATH /app/cairo/lib:${LD_LIBRARY_PATH}
+RUN PKG_CONFIG_PATH=/app/cairo/lib/pkgconfig "${APP}/env/bin/pip" install pycairo
 
 WORKDIR ${APP}
 
