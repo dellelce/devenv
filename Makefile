@@ -15,4 +15,7 @@ build: Dockerfile
 run:
 	@docker run --name $(NAME) --rm $(EARGS) -e PORT=$(PORT) -v $(VOL) -it $(NAME)  bash
 
+kill:
+	@docker kill $(NAME)
+
 all: build run
