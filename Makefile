@@ -18,4 +18,7 @@ run:
 kill:
 	@docker kill $(NAME)
 
+pull:
+	@for image in $$(awk '/FROM/ {  print $$2 } ' Dockerfile ); do docker pull $$image; done
+
 all: build run
