@@ -9,7 +9,7 @@ Based on alpine (my uWSGI image also my python 3 build) and currently using a fe
 All activities are wrapped in a makefile.
 
 | Target      | Description                       |
-+-------------+-----------------------------------+
+|-------------|-----------------------------------|
 | run         | Run the image (shell prompt)      |
 | build       | Builds the image                  |
 | kill        | Kills the currently running image |
