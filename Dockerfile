@@ -14,7 +14,7 @@ ENV HOME /root
 
 COPY requirements.txt requirements-dev.txt ${APP}/
 
-COPY ${id}   ${APP}/home/
+COPY ${id}   ${HOME}
 COPY vimrc   ${HOME}/.vimrc
 COPY profile ${HOME}/.bashrc
 
