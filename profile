@@ -9,4 +9,6 @@ alias vi=vim
 d="/usr/lib/jvm/java-1.8-openjdk"
 [ -d "${d}" ] && { export PATH="${PATH}:${d}/bin"; export JAVA_HOME="${d}"; }
 
+[ -f "${HOME}/.autoload" ] && . "${HOME}/.autoload"
+
 unset d
