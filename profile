@@ -14,4 +14,4 @@ d="/usr/lib/jvm/java-1.8-openjdk"
 unset d
 
 # custom TMP, we need to move this to a volume, probably?
-[ -z "$TMP" ] && { export TMP="$HOME/tmp"; mkdir "$TMP"; }
+[ -z "$TMP" ] && { export TMP="$HOME/tmp"; [ ! -d "$TMP" ] && mkdir "$TMP"; }
