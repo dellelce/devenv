@@ -15,10 +15,13 @@ build: Dockerfile
 run:
 	@docker run --name $(NAME) --rm $(EARGS) -e PORT=$(PORT) -v $(VOL) -it $(NAME)  bash
 
+exec:
+	@docker exec -it $(NAME)  bash
+
 kill:
 	@docker kill $(NAME)
 
 pull:
-	@for image in $$(awk '/FROM/ {  print $$2 } ' Dockerfile ); do docker pull $$image; done
+	@for image in $$(awk '$$1 ~ /FROM/ {  print $$2 } ' Dockerfile ); do docker pull $$image; done
 
 all: build run
