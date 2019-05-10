@@ -7,7 +7,7 @@
 #
 
 export SRCCONFIG="$HOME/.src"
-export SAVEDIRS="${SRCCONFIG}/savedirs"
+[ -z "$SAVEDIRS" ] && export SAVEDIRS="${SRCCONFIG}/savedirs"
 
 unset PHELP_IDX
 
