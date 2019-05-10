@@ -2,7 +2,7 @@
 
 A base image to be used as starting point for other images or good for standalone use.
 
-Based on alpine (my uWSGI image also my python 3 build) and currently using a few Java bits.
+Based on Alpine Linux (with my custom uWSGI & Python 3 builds on top see [mkit](https://github.com/dellelce/mkit) and currently using a few Java bits.
 
 ## Using
 
@@ -13,7 +13,7 @@ All activities are wrapped in a makefile.
 | run         | Run the image (shell prompt)      |
 | build       | Builds the image                  |
 | kill        | Kills the currently running image |
-| pull        | Updates images                    |
-| all         | Build and run it                  |
+| pull        | Updates base images               |
+| all         | Build and run image               |
 
 Simply running ```make all``` will give a running prompt.
