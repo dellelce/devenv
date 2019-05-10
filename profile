@@ -14,7 +14,7 @@ d="/usr/lib/jvm/java-1.8-openjdk"
 [ -d "${APP}/vol" ] &&
 {
   export VOL="${APP}/vol"
-  [ ! -d "$VOL/savedirs" ] && { mkdir "$VOL/savedirs" ]
+  [ ! -d "$VOL/savedirs" ] && { mkdir "$VOL/savedirs"; }
 
   # if the above succeeded we can use it for our SAVEDIRS variable
   export SAVEDIRS="$VOL/savedirs"
