@@ -19,7 +19,10 @@ COPY vimrc   ${HOME}/.vimrc
 COPY profile ${HOME}/.bashrc
 
 # Shell configuration
-RUN apk add bash vim wget gawk gcc git libc-dev make openjdk8 maven
+RUN apk add bash vim wget gawk openssh-client   \
+            gcc g++ git libc-dev make           \
+            openjdk8 maven gradle               \
+            nodejs npm go
 
 # Python configuration
 RUN   mkdir -p "${APP}/env"  && \
