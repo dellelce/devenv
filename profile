@@ -32,3 +32,6 @@ unset d
 
 # custom TMP, do we need to move this to a volume?
 [ -z "$TMP" ] && { export TMP="$HOME/tmp"; [ ! -d "$TMP" ] && mkdir "$TMP"; }
+
+# if we have cairo installed have it added to the PATH
+[ -d "/app/cairo/bin" ] && { export PATH="/app/cairo/bin:$PATH"; }
