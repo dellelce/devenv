@@ -22,7 +22,8 @@ COPY profile ${HOME}/.bashrc
 RUN apk add bash vim wget gawk openssh-client   \
             gcc g++ git libc-dev make           \
             openjdk8 maven gradle               \
-            nodejs npm go
+            nodejs npm go                       \
+            bind-tools
 
 # Python configuration
 RUN   mkdir -p "${APP}/env"  && \
