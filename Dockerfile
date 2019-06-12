@@ -9,8 +9,10 @@ LABEL maintainer="Antonio Dell'Elce"
 ARG id=devenv
 ARG port=8080
 
-ENV APP /app/${id}
+ENV APP  /app/${id}
 ENV HOME /root
+
+ENV TZ   "Europe/London"
 
 COPY requirements.txt requirements-dev.txt ${APP}/
 
@@ -23,7 +25,7 @@ RUN apk add bash vim wget gawk openssh-client   \
             gcc g++ git libc-dev make           \
             openjdk8 maven gradle               \
             nodejs npm go                       \
-            bind-tools file xz
+            bind-tools file xz tzdata
 
 # Python configuration
 RUN   mkdir -p "${APP}/env"  && \
