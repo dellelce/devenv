@@ -20,10 +20,11 @@ COPY ${id}   ${HOME}
 COPY vimrc   ${HOME}/.vimrc
 COPY profile ${HOME}/.bashrc
 
-# Shell configuration
+# Packages
+# Java commented out 130619:            openjdk8 maven gradle               \
 RUN apk add bash vim wget gawk openssh-client   \
             gcc g++ git libc-dev make           \
-            openjdk8 maven gradle               \
+            linux-headers                       \
             nodejs npm go                       \
             bind-tools file xz tzdata
 
