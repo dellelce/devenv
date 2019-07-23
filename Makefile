@@ -4,19 +4,31 @@ PORT  = 8034
 PUB   = $(PORT):$(PORT)
 NAME  = devenv
 
-# why don't you like strace?
-EARGS = --cap-add=SYS_PTRACE
 VOL   = ${PWD}/vol:/app/$(NAME)/vol
+
+# Setup gopath - Initially the same path is used inside and outside the container
+GOPATH  = /root/tmp/gopath
+GO      = -e GOPATH="$(GOPATH)" -v $(GOPATH):$(GOPATH)
+
+# mount current directory as /work
+WORK    = -v $$PWD:/work
+
+# always enable strace, you never know when you need it
+EARGS = --cap-add=SYS_PTRACE $(WORK) $(GO)
+
+#default taget is help
+help:
+	@echo targets: build, run, exec, pull, all(=build+run)
 
 build: Dockerfile
 	@docker build -t $(NAME) .
 
-# yeah --rm, I always forget that other otherwise they stay ther
+# yeah --rm, I always forget that other otherwise they stay there
 run:
-	@docker run --name $(NAME) --rm $(EARGS) -e PORT=$(PORT) -v $(VOL) -p $(PUB) -it $(NAME)  bash
+	@docker run --name $(NAME) --rm $(EARGS) -e PORT=$(PORT) -v $(VOL) -p $(PUB) -it $(NAME)
 
 exec:
-	@docker exec -it $(NAME)  bash
+	@docker exec -it $(NAME) 
 
 kill:
 	@docker kill $(NAME)
