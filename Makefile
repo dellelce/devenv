@@ -11,10 +11,12 @@ GOPATH  = /root/tmp/gopath
 GO      = -e GOPATH="$(GOPATH)" -v $(GOPATH):$(GOPATH)
 
 # mount current directory as /work
-WORK    = -v $$PWD:/work
+# Instead of reading directly PWD we use another variable to allow
+# to use a directory different from where the makefile is.
+WORK    = -v $$wd:/work
 
 # always enable strace, you never know when you need it
-EARGS = --cap-add=SYS_PTRACE $(WORK) $(GO)
+EARGS   = --cap-add=SYS_PTRACE $(WORK) $(GO)
 
 #default taget is help
 help:
@@ -28,7 +30,7 @@ run:
 	@docker run --name $(NAME) --rm $(EARGS) -e PORT=$(PORT) -v $(VOL) -p $(PUB) -it $(NAME)
 
 exec:
-	@docker exec -it $(NAME) 
+	@docker exec -it $(NAME)
 
 kill:
 	@docker kill $(NAME)
