@@ -44,12 +44,12 @@ ENV LD_LIBRARY_PATH /app/cairo/lib:${LD_LIBRARY_PATH}
 RUN PKG_CONFIG_PATH=/app/cairo/lib/pkgconfig "${APP}/env/bin/pip" install pycairo
 
 # install mkit
-RUN v=0.0.37; cd && wget -O mkit.tar.gz -q "https://github.com/dellelce/mkit/archive/${v}.tar.gz" && \
+RUN v=master; cd && wget -O mkit.tar.gz -q "https://github.com/dellelce/mkit/archive/${v}.tar.gz" && \
     tar xf mkit.tar.gz && mv mkit-* mkit && ln -s ../mkit/mkit.sh bin && rm mkit.tar.gz
 
 ENV PATH "${HOME}/mkit:${PATH}"
 
 WORKDIR ${APP}
-CMD ["/bin/bash"]
+ENTRYPOINT ["/bin/bash"]
 
 ## EOF ##
