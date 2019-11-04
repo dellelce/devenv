@@ -24,6 +24,8 @@ COPY profile ${HOME}/.bashrc
 # Java commented out 130619:            openjdk8 maven gradle               \
 RUN apk add bash vim wget gawk openssh-client   \
             gcc g++ git libc-dev make           \
+            cmake bison                         \
+            perl                                \
             linux-headers                       \
             nodejs npm go                       \
             bind-tools file xz tzdata
