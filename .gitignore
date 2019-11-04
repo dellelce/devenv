@@ -1,1 +1,5 @@
 vol
+*.gz
+*.xz
+*.tar
+*.bz2
