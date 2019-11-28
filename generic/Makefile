@@ -1,10 +1,10 @@
-# My Environment
+# My Personal "Generic" Environment
 
 PORT  = 8034
 PUB   = $(PORT):$(PORT)
 NAME  = devenv
 
-VOL   = ${PWD}/vol:/app/$(NAME)/vol
+VOL   = ${DEVENV}/vol:/app/$(NAME)/vol
 
 # Setup gopath - Initially the same path is used inside and outside the container
 GOPATH  = /root/tmp/gopath
