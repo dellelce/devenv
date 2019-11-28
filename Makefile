@@ -25,12 +25,12 @@ help:
 build: Dockerfile
 	@docker build -t $(NAME) .
 
-# yeah --rm, I always forget that other otherwise they stay there
+# yeah --rm, I always forget that otherwise the instance persists..
 run:
 	@docker run --name $(NAME) --rm $(EARGS) -e PORT=$(PORT) -v $(VOL) -p $(PUB) -it $(NAME)
 
 exec:
-	@docker exec -it $(NAME)
+	@docker exec -it $(NAME) /bin/bash
 
 kill:
 	@docker kill $(NAME)
