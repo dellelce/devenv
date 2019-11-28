@@ -1,0 +1,14 @@
+#
+# Created:      281119
+# Description:  autoload file for rundev
+#
+# vim:syntax=sh
+#
+
+## ENV ##
+
+ # used by my "projects" script
+ export DEVENV="$PWD"
+
+## EOF ##
+
