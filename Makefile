@@ -1,7 +1,7 @@
 # My Personal Environments
 
 help:
-	@echo work in progress
+	@echo default is help: work in progress
 
 build_generic:
 	@cd generic; make build
