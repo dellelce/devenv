@@ -23,7 +23,7 @@ help:
 	@echo targets: build, run, exec, pull, all(=build+run)
 
 build: Dockerfile
-	@docker build -t $(NAME) .
+	@docker build --no-cache -t $(NAME) .
 
 # yeah --rm, I always forget that otherwise the instance persists..
 run:
