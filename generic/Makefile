@@ -4,7 +4,7 @@ PORT  = 8034
 PUB   = $(PORT):$(PORT)
 NAME  = devenv
 
-VOL   = ${DEVENV}/vol:/app/$(NAME)/vol
+VOL   = -v ${DEVENV}/vol:/app/$(NAME)/vol -v $(HOME)/.ssh:/root/.ssh
 
 # Setup gopath - Initially the same path is used inside and outside the container
 GOPATH  = /root/tmp/gopath
@@ -27,7 +27,7 @@ build: Dockerfile
 
 # yeah --rm, I always forget that otherwise the instance persists..
 run:
-	@docker run --name $(NAME) --rm $(EARGS) -e PORT=$(PORT) -v $(VOL) -p $(PUB) -it $(NAME)
+	@docker run --name $(NAME) --rm $(EARGS) -e PORT=$(PORT) $(VOL) -p $(PUB) -it $(NAME)
 
 exec:
 	@docker exec -it $(NAME) /bin/bash
