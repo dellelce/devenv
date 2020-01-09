@@ -2,13 +2,9 @@
 
 PORT  = 8034
 PUB   = $(PORT):$(PORT)
-NAME  = devenv
+NAME  = jdk11env
 
 VOL   = -v ${DEVENV}/vol:/app/$(NAME)/vol -v $(HOME)/.ssh:/root/.ssh
-
-# Setup gopath - Initially the same path is used inside and outside the container
-GOPATH  = /root/tmp/gopath
-GO      = -e GOPATH="$(GOPATH)" -v $(GOPATH):$(GOPATH)
 
 # mount current directory as /work
 # Instead of reading directly PWD we use another variable to allow
@@ -16,11 +12,11 @@ GO      = -e GOPATH="$(GOPATH)" -v $(GOPATH):$(GOPATH)
 WORK    = -v $$wd:/work
 
 # always enable strace, you never know when you need it
-EARGS   = --cap-add=SYS_PTRACE $(WORK) $(GO)
+EARGS   = --cap-add=SYS_PTRACE $(WORK)
 
 #default taget is help
 help:
-	@echo targets: build, run, exec, pull, all(=build+run)
+	@echo "targets: build, run, exec, pull, all(=build+run)"
 
 build: Dockerfile
 	@docker build --no-cache -t $(NAME) .
