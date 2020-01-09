@@ -20,7 +20,7 @@ EARGS   = --cap-add=SYS_PTRACE $(WORK) $(GO)
 
 #default taget is help
 help:
-	@echo targets: build, run, exec, pull, all(=build+run)
+	@echo "targets: build, run, exec, pull, all(=build+run)"
 
 build: Dockerfile
 	@docker build --no-cache -t $(NAME) .
