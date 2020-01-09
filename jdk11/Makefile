@@ -34,4 +34,7 @@ kill:
 pull:
 	@for image in $$(awk '$$1 ~ /FROM/ {  print $$2 } ' Dockerfile ); do docker pull $$image; done
 
+clean:
+	@docker rmi $(NAME)
+
 all: build run
