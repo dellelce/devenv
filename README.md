@@ -1,19 +1,34 @@
 # My Development Environment
 
-A base image to be used as starting point for other images or good for standalone use.
+Base images to be used as starting point for other images or good for standalone use.
 
-Based on Alpine Linux (with my custom uWSGI & Python 3 builds on top see [mkit](https://github.com/dellelce/mkit) and currently using a few Java bits.
+All activities are wrapped in a makefile, example:
 
-## Using
+``` bash
+$ make <target>
+```
+where possible "targets" are described below.
 
-All activities are wrapped in a makefile.
+## generic image (python, javascript, go)
 
-| Target      | Description                       |
-|-------------|-----------------------------------|
-| run         | Run the image (shell prompt)      |
-| build       | Builds the image                  |
-| kill        | Kills the currently running image |
-| pull        | Updates base images               |
-| all         | Build and run image               |
+with my custom uWSGI & Python 3 (see [mkit](https://github.com/dellelce/mkit))
+builds on top of Alpine
 
-Simply running ```make all``` will give a running prompt.
+Targets for the "generic" image:
+
+
+| Target         | Description                       |
+|----------------|-----------------------------------|
+| run_generic    | Run the image (shell prompt)      |
+| build_generic  | Builds the image                  |
+| kill_jdk11     | Kills the currently running image |
+
+## jdk11 image
+
+Targets for the "jdk11" image:
+
+| Target          | Description                       |
+|-----------------|-----------------------------------|
+| run_jdk11       | Run the image (shell prompt)      |
+| build_jdk11     | Builds the image                  |
+| kill_jdk11      | Kills the currently running image |
