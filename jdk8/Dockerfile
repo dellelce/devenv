@@ -4,7 +4,7 @@ FROM alpine:latest
 
 LABEL maintainer="Antonio Dell'Elce"
 
-ARG id=jdk11
+ARG id=jdk8
 ARG port=8080
 
 ENV APP  /app/${id}
@@ -19,7 +19,7 @@ COPY profile ${HOME}/.bashrc
 RUN apk add bash vim wget gawk openssh-client   \
             git libc-dev make                   \
             linux-headers                       \
-            openjdk11 maven gradle              \
+            openjdk8 maven gradle              \
             bind-tools file xz tzdata
 
 WORKDIR ${APP}

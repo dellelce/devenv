@@ -27,6 +27,18 @@ exec_jdk11:
 clean_jdk11:
 	@cd jdk11; make clean
 
+build_jdk8:
+	@cd jdk8; make build
+
+run_jdk8:
+	@cd jdk8; make run
+
+exec_jdk8:
+	@cd jdk8; make exec
+
+clean_jdk8:
+	@cd jdk8; make clean
+
 clean: clean_jdk11 clean_generic
 
 build_all: build_jdk11 build_generic

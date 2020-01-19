@@ -2,7 +2,7 @@
 
 PORT  = 8034
 PUB   = $(PORT):$(PORT)
-NAME  = jdk11env
+NAME  = jdk8env
 
 VOL   = -v ${DEVENV}/vol:/app/$(NAME)/vol -v $(HOME)/.ssh:/root/.ssh
 
