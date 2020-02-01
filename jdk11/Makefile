@@ -1,4 +1,4 @@
-# My Personal "Generic" Environment
+# My Personal "Java 11" Environment
 
 PORT  = 8034
 PUB   = $(PORT):$(PORT)

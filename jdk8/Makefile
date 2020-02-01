@@ -1,6 +1,6 @@
-# My Personal "Generic" Environment
+# My Personal "Java 8" Environment
 
-PORT  = 8034
+PORT  = 8033
 PUB   = $(PORT):$(PORT)
 NAME  = jdk8env
 
