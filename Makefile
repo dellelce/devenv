@@ -15,6 +15,7 @@ exec_generic:
 clean_generic:
 	@cd generic; make clean
 
+#jdk11
 build_jdk11:
 	@cd jdk11; make build
 
@@ -27,6 +28,7 @@ exec_jdk11:
 clean_jdk11:
 	@cd jdk11; make clean
 
+#jdk8
 build_jdk8:
 	@cd jdk8; make build
 
@@ -39,6 +41,19 @@ exec_jdk8:
 clean_jdk8:
 	@cd jdk8; make clean
 
-clean: clean_jdk11 clean_generic
+#typescript
+build_typescript:
+	@cd typescript; make build
 
-build_all: build_jdk11 build_generic
+run_typescript:
+	@cd typescript; make run
+
+exec_typescript:
+	@cd typescript; make exec
+
+clean_typescript:
+	@cd typescript; make clean
+
+clean: clean_jdk11 clean_generic clean_typescript
+
+build_all: build_jdk11 build_generic build_generic build_typescript
