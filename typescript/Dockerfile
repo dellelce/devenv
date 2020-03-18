@@ -1,4 +1,4 @@
-# Base image "dellelce/uwsgi" is alpine + python3 latest + uwsgi
+# Base image: standard alpine 3.11
 FROM alpine:3.11
 
 LABEL maintainer="Antonio Dell'Elce"
@@ -21,11 +21,9 @@ RUN apk add bash vim wget gawk openssh-client   \
             nodejs npm                          \
             bind-tools file xz tzdata
 
-
 # Typescript
 RUN   npm install --silent --save-dev -g \
         typescript
-
 
 WORKDIR ${APP}
 ENTRYPOINT ["/bin/bash"]
