@@ -1,6 +1,6 @@
-# My Personal Environments
+# My Personal "Interactive" Environments
 
 help:
-	@echo default is help: work in progress
+	@for mk in mk/*.mk; do awk -f mk/help.awk $$mk; done
 
 include mk/*.mk
