@@ -41,3 +41,6 @@ unset d
    psave devops
    cd -
 }
+
+# Make sure directory for penv exists
+mkdir -p ${SRCCONFIG}/env
