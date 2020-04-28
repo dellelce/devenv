@@ -6,10 +6,6 @@ alias vi=vim
 [ -f "${APP}/env/bin/activate" ] && . ${APP}/env/bin/activate
 [ ! -z "${INSTALLDIR}" -a -d "${INSTALLDIR}/bin" ]  && export PATH="${INSTALLDIR}/bin:$PATH"
 
-# TODO: move java to autoload script
-d="/usr/lib/jvm/java-1.8-openjdk"
-[ -d "${d}" ] && { export PATH="${PATH}:${d}/bin"; export JAVA_HOME="${d}"; }
-
 # setup SAVEDIRS on volume
 [ -d "${APP}/vol" ] &&
 {
@@ -28,7 +24,6 @@ d="/usr/lib/jvm/java-1.8-openjdk"
 
 [ -f "${HOME}/.autoload" ] && . "${HOME}/.autoload"
 
-
 # custom TMP, do we need to move this to a volume?
 [ -z "$TMP" ] && { export TMP="$HOME/tmp"; [ ! -d "$TMP" ] && mkdir "$TMP"; }
 
@@ -39,3 +34,10 @@ do
 done
 
 unset d
+
+[ ! -f "$SAVEDIRS/devops.proj" ] &&
+{
+   cd $HOME/devops
+   psave devops
+   cd -
+}

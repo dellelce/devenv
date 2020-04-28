@@ -21,7 +21,6 @@ COPY vimrc   ${HOME}/.vimrc
 COPY profile ${HOME}/.bashrc
 
 # Packages
-# Java commented out 130619:            openjdk8 maven gradle               \
 RUN apk add bash vim wget gawk openssh-client   \
             gcc g++ git libc-dev make           \
             cmake bison                         \
@@ -48,6 +47,10 @@ RUN PKG_CONFIG_PATH=/app/cairo/lib/pkgconfig "${APP}/env/bin/pip" install pycair
 # install mkit
 RUN v=master; cd && wget -O mkit.tar.gz -q "https://github.com/dellelce/mkit/archive/${v}.tar.gz" && \
     tar xf mkit.tar.gz && mv mkit-* mkit && ln -s ../mkit/mkit.sh bin && rm mkit.tar.gz
+
+# install devops kit
+RUN v=master; cd && wget -O devops.tar.gz -q "https://github.com/dellelce/devops-kit/archive/${v}.tar.gz" && \
+    tar xf devops.tar.gz && mv devops-* devops && rm devops.tar.gz
 
 ENV PATH "${HOME}/mkit:${PATH}"
 
