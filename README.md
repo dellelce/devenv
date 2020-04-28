@@ -14,4 +14,4 @@ all images have installed:
 
 Example of installing "terraform" from  bundled devops-kit:
 
-![Installing Terraform](install_terraform_0.gif)
+![Installing Terraform](images/install_terraform_0.gif)
