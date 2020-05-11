@@ -1,4 +1,7 @@
 # generic
+
+ALL += build_generic
+
 build_generic:
 	@cd generic; make build
 

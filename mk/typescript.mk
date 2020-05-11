@@ -1,4 +1,7 @@
 #typescript
+
+ALL += build_typescript
+
 build_typescript:
 	@cd typescript; make build
 

@@ -1,4 +1,7 @@
 #jdk11
+
+ALL += build_jdk11
+
 build_jdk11:
 	@cd jdk11; make build
 

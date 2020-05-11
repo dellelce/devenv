@@ -1,4 +1,7 @@
 #jdk8
+
+ALL += build_jdk8
+
 build_jdk8:
 	@cd jdk8; make build
 
