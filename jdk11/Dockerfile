@@ -22,7 +22,7 @@ RUN apk add bash vim wget gawk openssh-client   \
             openjdk11 maven gradle              \
             bind-tools file xz tzdata
 
-WORKDIR ${APP}
+WORKDIR /work
 ENTRYPOINT ["/bin/bash"]
 
 ## EOF ##

@@ -14,7 +14,7 @@ ENV TZ   "Europe/London"
 COPY vimrc   ${HOME}/.vimrc
 COPY profile ${HOME}/.bashrc
 
-COPY tsenv   ${APP}
+COPY tsenv   /work
 
 # Packages
 RUN apk add bash vim wget gawk openssh-client   \
@@ -25,7 +25,7 @@ RUN apk add bash vim wget gawk openssh-client   \
 RUN   npm install --silent --save-dev -g \
         typescript
 
-WORKDIR ${APP}
+WORKDIR /work
 ENTRYPOINT ["/bin/bash"]
 
 ## EOF ##

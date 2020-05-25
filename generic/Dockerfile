@@ -14,7 +14,7 @@ ENV HOME /root
 
 ENV TZ   "Europe/London"
 
-COPY requirements.txt requirements-dev.txt ${APP}/
+COPY requirements.txt requirements-dev.txt /work/
 
 COPY ${id}   ${HOME}
 COPY vimrc   ${HOME}/.vimrc
@@ -30,19 +30,19 @@ RUN apk add bash vim wget gawk openssh-client   \
             bind-tools file xz tzdata
 
 # Python configuration
-RUN   mkdir -p "${APP}/env"  && \
-      cd "${APP}/env" && \
+RUN   mkdir -p "/work/env"  && \
+      cd "/work/env" && \
       ${INSTALLDIR}/bin/python3 -m venv . && \
-      . ${APP}/env/bin/activate     && \
+      . /work/env/bin/activate     && \
       pip install --no-cache-dir -U pip setuptools && \
-      pip install --no-cache-dir -r ${APP}/requirements-dev.txt && \
-      rm ${APP}/requirements-dev.txt && \
-      rm ${APP}/requirements.txt
+      pip install --no-cache-dir -r /work/requirements-dev.txt && \
+      rm /work/requirements-dev.txt && \
+      rm /work/requirements.txt
 
 # Cairo Install
 COPY --from=cairo /app/cairo /app/cairo
 ENV LD_LIBRARY_PATH /app/cairo/lib:${LD_LIBRARY_PATH}
-RUN PKG_CONFIG_PATH=/app/cairo/lib/pkgconfig "${APP}/env/bin/pip" install pycairo
+RUN PKG_CONFIG_PATH=/app/cairo/lib/pkgconfig "/work/env/bin/pip" install pycairo
 
 # install mkit
 RUN v=master; cd && wget -O mkit.tar.gz -q "https://github.com/dellelce/mkit/archive/${v}.tar.gz" && \
@@ -54,7 +54,7 @@ RUN v=master; cd && wget -O devops.tar.gz -q "https://github.com/dellelce/devops
 
 ENV PATH "${HOME}/mkit:${PATH}"
 
-WORKDIR ${APP}
+WORKDIR /work
 ENTRYPOINT ["/bin/bash"]
 
 ## EOF ##
