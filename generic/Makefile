@@ -7,7 +7,7 @@ NAME  = devenv
 VOL   = -v ${DEVENV}/vol:/app/$(NAME)/vol -v $(HOME)/.ssh:/root/.ssh
 
 # Setup gopath - Initially the same path is used inside and outside the container
-GOPATH  = /root/tmp/gopath
+GOPATH  = $$(HOME)/tmp/gopath
 GO      = -e GOPATH="$(GOPATH)" -v $(GOPATH):$(GOPATH)
 
 # mount current directory as /work
