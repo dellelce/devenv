@@ -4,3 +4,4 @@ vol
 *.tar
 *.bz2
 logs
+tmp
