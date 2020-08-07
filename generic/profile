@@ -3,6 +3,8 @@
 export PS1='\$ '
 alias vi=vim
 
+mount -o remount /work >/dev/null 2>&1 || { echo "/work not mounted!"; exit 1; }
+
 [ -f "${APP}/env/bin/activate" ] && . ${APP}/env/bin/activate
 [ ! -z "${INSTALLDIR}" -a -d "${INSTALLDIR}/bin" ]  && export PATH="${INSTALLDIR}/bin:$PATH"
 
